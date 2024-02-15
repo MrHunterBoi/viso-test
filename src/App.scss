@@ -1,0 +1,66 @@
+@import "./styles/vars";
+
+.main {
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+
+    &__title {
+        color: $bg-color-secondary;
+    }
+
+    &__map-section {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.side {
+    padding: 20px 60px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__button {
+        width: 100%;
+        padding-block: 10px;
+
+        background-color: transparent;
+        color: $text-color-danger;
+
+        border: 1px solid $text-color-danger;
+        border-radius: 10px;
+
+        transition-property: color, background-color;
+        transition-duration: 0.3s;
+
+        &:hover {
+            cursor: pointer;
+
+            background-color: $text-color-danger;
+            color: $bg-color-secondary;
+        }
+    }
+}
+
+.instructions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__title {
+        color: $bg-color-secondary;
+        margin-bottom: 50px;
+    }
+
+    &__rule {
+        color: $bg-color-secondary;
+        margin-bottom: 10px;
+    }
+}
