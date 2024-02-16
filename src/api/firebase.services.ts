@@ -1,4 +1,11 @@
-import { collection, deleteDoc, doc, getDocs, setDoc } from 'firebase/firestore';
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  setDoc,
+  updateDoc,
+} from 'firebase/firestore';
 import { Location } from '../types/Location';
 import { db } from './firebase';
 
@@ -14,6 +21,10 @@ export const addLocation = (id: string, locationData: Omit<Location, 'id'>) => {
 
 export const removeLocation = (id: string) => {
   return deleteDoc(doc(db, DB_NAME, id));
+};
+
+export const updateLocation = (id: string, newData: Omit<Location, 'id'>) => {
+  return updateDoc(doc(db, DB_NAME, id), { ...newData });
 };
 
 export const removeAllLocations = async () => {

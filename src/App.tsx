@@ -9,6 +9,7 @@ import {
   getAllLocations,
   removeAllLocations,
   removeLocation,
+  updateLocation,
 } from './api/firebase.services';
 import { getNormilizedData, getUniqueID } from './helper';
 import { Location } from './types/Location';
@@ -77,11 +78,18 @@ const App = () => {
     location.location = new GeoPoint(newPosition.lat(), newPosition.lng());
     location.timestamp = Timestamp.fromDate(new Date());
 
-    setLocations(prevLocations => {
-      const filteredLocations = prevLocations.filter(location => location.id !== id);
+    updateLocation(location.id, {
+      location: location.location,
+      timestamp: location.timestamp,
+    })
+      .then(() => {
+        setLocations(prevLocations => {
+          const filteredLocations = prevLocations.filter(location => location.id !== id);
 
-      return [...filteredLocations, location];
-    });
+          return [...filteredLocations, location];
+        });
+      })
+      .catch(() => {});
   };
 
   return (
